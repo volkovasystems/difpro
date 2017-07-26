@@ -48,7 +48,7 @@
 	@module-documentation:
 		Property difference.
 
-		This will return the list of property different between the source and target.
+		This will return the list of property difference between the source and target.
 
 		The will return own properties and symbols.
 	@end-module-documentation
@@ -56,13 +56,18 @@
 	@include:
 		{
 			"difray": "difray",
-			"falzy": "falzy"
+			"falzy": "falzy",
+			"truly": "truly"
 		}
 	@end-include
 */
 
 const difray = require( "difray" );
 const falzy = require( "falzy" );
+const truly = require( "truly" )
+
+const getOwnPropertyNames = Object.getOwnPropertyNames;
+const getOwnPropertySymbols = Object.getOwnPropertySymbols;
 
 const difpro = function difpro( source, target ){
 	/*;
@@ -78,19 +83,17 @@ const difpro = function difpro( source, target ){
 		return [ ];
 	}
 
-	if( falzy( source ) ){
-		return Object.getOwnPropertyNames( target )
-			.concat( Object.getOwnPropertySymbols( target ) );
+	if( falzy( source ) && truly( target ) ){
+		return getOwnPropertyNames( target ).concat( getOwnPropertySymbols( target ) );
 	}
 
-	if( falzy( target ) ){
-		return Object.getOwnPropertyNames( source )
-			.concat( Object.getOwnPropertySymbols( source ) );
+	if( falzy( target ) && truly( source ) ){
+		return getOwnPropertyNames( source ).concat( getOwnPropertySymbols( source ) );
 	}
 
-	source = Object.getOwnPropertyNames( source ).concat( Object.getOwnPropertySymbols( source ) );
+	source = getOwnPropertyNames( source ).concat( getOwnPropertySymbols( source ) );
 
-	target = Object.getOwnPropertyNames( target ).concat( Object.getOwnPropertySymbols( target ) );
+	target = getOwnPropertyNames( target ).concat( getOwnPropertySymbols( target ) );
 
 	return difray( source, target );
 };

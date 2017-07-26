@@ -1,45 +1,38 @@
 {
-  "name": "difpro",
-  "version": "0.2.0",
-  "description": "Property difference.",
-  "main": "difpro.js",
-  "support": "difpro.support.js",
-  "deploy": "difpro.deploy.js",
-  "browser": "difpro.deploy.js",
-  "scripts": {
-    "build": "babel difpro.js --out-file difpro.support.js --source-maps && webpack --progress --display-modules",
-    "test": "mocha difpro-test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/volkovasystems/difpro.git"
-  },
-  "keywords": [
-    "property",
-    "difference",
-    "difpro"
-  ],
-  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-  "contributors": [
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/volkovasystems/difpro/issues"
-  },
-  "homepage": "https://github.com/volkovasystems/difpro#readme",
-  "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "difray": "^0.2.0",
-    "falzy": "^0.20.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
-    "source-map-loader": "^0.2.1",
-    "webpack": "^3.2.0"
-  }
+	"name": "difpro",
+	"version": "0.3.0",
+	"description": "Property difference.",
+	"main": "difpro.js",
+	"support": "difpro.support.js",
+	"deploy": "difpro.deploy.js",
+	"browser": "difpro.deploy.js",
+	"scripts": {
+		"build": "babel difpro.js --out-file difpro.support.js --source-maps && webpack --progress --display-modules",
+		"test": "mocha difpro-test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/volkovasystems/difpro.git"
+	},
+	"keywords": [
+		"property",
+		"difference",
+		"difpro"
+	],
+	"author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"contributors": [
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/volkovasystems/difpro/issues"
+	},
+	"homepage": "https://github.com/volkovasystems/difpro#readme",
+	"dependencies": {
+		"babel-runtime": "^6.23.0",
+		"difray": "^0.3.0",
+		"falzy": "^0.23.0",
+		"truly": "^0.20.0"
+	}
 }

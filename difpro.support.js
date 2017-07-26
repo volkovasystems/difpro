@@ -48,7 +48,7 @@
               	@module-documentation:
               		Property difference.
               
-              		This will return the list of property different between the source and target.
+              		This will return the list of property difference between the source and target.
               
               		The will return own properties and symbols.
               	@end-module-documentation
@@ -56,13 +56,18 @@
               	@include:
               		{
               			"difray": "difray",
-              			"falzy": "falzy"
+              			"falzy": "falzy",
+              			"truly": "truly"
               		}
               	@end-include
               */var _getOwnPropertySymbols = require("babel-runtime/core-js/object/get-own-property-symbols");var _getOwnPropertySymbols2 = _interopRequireDefault(_getOwnPropertySymbols);var _getOwnPropertyNames = require("babel-runtime/core-js/object/get-own-property-names");var _getOwnPropertyNames2 = _interopRequireDefault(_getOwnPropertyNames);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var difray = require("difray");
 var falzy = require("falzy");
+var truly = require("truly");
+
+var getOwnPropertyNames = _getOwnPropertyNames2.default;
+var getOwnPropertySymbols = _getOwnPropertySymbols2.default;
 
 var difpro = function difpro(source, target) {
 	/*;
@@ -78,19 +83,17 @@ var difpro = function difpro(source, target) {
 		return [];
 	}
 
-	if (falzy(source)) {
-		return (0, _getOwnPropertyNames2.default)(target).
-		concat((0, _getOwnPropertySymbols2.default)(target));
+	if (falzy(source) && truly(target)) {
+		return getOwnPropertyNames(target).concat(getOwnPropertySymbols(target));
 	}
 
-	if (falzy(target)) {
-		return (0, _getOwnPropertyNames2.default)(source).
-		concat((0, _getOwnPropertySymbols2.default)(source));
+	if (falzy(target) && truly(source)) {
+		return getOwnPropertyNames(source).concat(getOwnPropertySymbols(source));
 	}
 
-	source = (0, _getOwnPropertyNames2.default)(source).concat((0, _getOwnPropertySymbols2.default)(source));
+	source = getOwnPropertyNames(source).concat(getOwnPropertySymbols(source));
 
-	target = (0, _getOwnPropertyNames2.default)(target).concat((0, _getOwnPropertySymbols2.default)(target));
+	target = getOwnPropertyNames(target).concat(getOwnPropertySymbols(target));
 
 	return difray(source, target);
 };

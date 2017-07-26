@@ -2,6 +2,7 @@ yarn add \
 babel-runtime \
 difray \
 falzy \
+truly \
 --save && \
 yarn add \
 babel-cli \
@@ -14,5 +15,6 @@ webpack \
 bower install \
 difray \
 falzy \
+truly \
 --save \
 --force-latest

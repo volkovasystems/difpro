@@ -1,30 +1,31 @@
 {
-  "name": "difpro",
-  "version": "0.2.0",
-  "description": "Property difference.",
-  "main": "difpro.deploy.js",
-  "support": "difpro.support.js",
-  "authors": [
-    "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "keywords": [
-    "property",
-    "difference",
-    "difpro"
-  ],
-  "homepage": "https://github.com/volkovasystems/difpro",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "difray": "^0.2.0",
-    "falzy": "^0.20.0"
-  }
+	"name": "difpro",
+	"version": "0.3.0",
+	"description": "Property difference.",
+	"main": "difpro.deploy.js",
+	"support": "difpro.support.js",
+	"authors": [
+		"Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"keywords": [
+		"property",
+		"difference",
+		"difpro"
+	],
+	"homepage": "https://github.com/volkovasystems/difpro",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"difray": "^0.3.0",
+		"falzy": "^0.23.0",
+		"truly": "^0.20.0"
+	}
 }
