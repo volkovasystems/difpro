@@ -19,11 +19,11 @@
 			QUnit.test( "difpro unit test", function( assert ) {
 
 				assert.deepEqual( difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } ),
-					[ "test", "apple" ], "should be deeply equal" );
+					[ "test", "apple" ], "should be equal to [ 'test', 'apple' ]" );
 
 				let test1 = difpro( { [ Symbol.for( "hello" ) ]: "hello" }, { [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } );
-				assert.deepEqual( test1, [ Symbol.for( "hi" ) ], "should be deeply equal" );
-				
+				assert.deepEqual( test1, [ Symbol.for( "hi" ) ], "should be equal to [ Symbol.for( 'hi' ) ]" );
+
 			} );
 		</script>
 	</body>
