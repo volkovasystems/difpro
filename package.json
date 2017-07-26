@@ -1,6 +1,6 @@
 {
 	"name": "difpro",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "Property difference.",
 	"main": "difpro.js",
 	"support": "difpro.support.js",
@@ -8,7 +8,12 @@
 	"browser": "difpro.deploy.js",
 	"scripts": {
 		"build": "babel difpro.js --out-file difpro.support.js --source-maps && webpack --progress --display-modules",
-		"test": "mocha difpro-test.js"
+		"pristine": "rsetmod clean && flxc execute ./.install.sh",
+		"clear": "rsetmod clean --clear",
+		"formal": "jesy apply '*.json'",
+		"pretest": "npm run clear && npm run build",
+		"test": "node difpro-test.js",
+		"posttest": "npm run formal"
 	},
 	"repository": {
 		"type": "git",
@@ -31,8 +36,16 @@
 	"homepage": "https://github.com/volkovasystems/difpro#readme",
 	"dependencies": {
 		"babel-runtime": "^6.23.0",
-		"difray": "^0.3.0",
+		"difray": "^0.4.0",
 		"falzy": "^0.23.0",
 		"truly": "^0.20.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.24.1",
+		"babel-core": "^6.25.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-latest": "^6.24.1",
+		"source-map-loader": "^0.2.1",
+		"webpack": "^3.4.0"
 	}
 }
