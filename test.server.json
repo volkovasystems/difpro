@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2017-07-31T12:16:49.360Z",
+    "end": "2017-07-31T12:16:49.377Z",
+    "duration": 17
+  },
+  "tests": [
+    {
+      "title": "should be deeply equal",
+      "fullTitle": "difpro \"difpro( { \"test\": \"123\", \"hello\": \"world\" }, { \"hello\": \"world\", \"apple\": \"orange\" } )\" should be deeply equal",
+      "duration": 6,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ],
+  "pending": [],
+  "failures": [],
+  "passes": [
+    {
+      "title": "should be deeply equal",
+      "fullTitle": "difpro \"difpro( { \"test\": \"123\", \"hello\": \"world\" }, { \"hello\": \"world\", \"apple\": \"orange\" } )\" should be deeply equal",
+      "duration": 6,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ]
+}

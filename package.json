@@ -1,41 +1,48 @@
 {
-  "name": "difpro",
-  "version": "0.0.0",
-  "description": "Property difference.",
-  "main": "difpro.js",
-  "support": "difpro.support.js",
-  "deploy": "difpro.deploy.js",
-  "browser": "difpro.deploy.js",
-  "scripts": {
-    "build": "babel difpro.js --out-file difpro.support.js --source-maps && webpack --progress --display-modules",
-    "test": "mocha difpro-test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/volkovasystems/difpro.git"
-  },
-  "keywords": [
-    "property",
-    "difference",
-    "difpro"
-  ],
-  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/volkovasystems/difpro/issues"
-  },
-  "homepage": "https://github.com/volkovasystems/difpro#readme",
-  "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "difray": "^0.0.0",
-    "falzy": "^0.19.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
-    "source-map-loader": "^0.2.1",
-    "webpack": "^2.5.1"
-  }
+	"name": "difpro",
+	"version": "0.0.0",
+	"description": "Property difference.",
+	"main": "difpro.js",
+	"support": "difpro.support.js",
+	"deploy": "difpro.deploy.js",
+	"browser": "difpro.deploy.js",
+	"scripts": {
+		"pristine": "rsetmod clean && flxc execute ./.install.sh",
+		"clear": "rsetmod clean --clear",
+		"formal": "jesy apply '*.json'",
+		"build:support": "gulp --module difpro --all",
+		"build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+		"rebuild": "npm run build:support && npm run build:deploy",
+		"build": "npm run pristine && npm run rebuild",
+		"build:test:support": "gulp --module test --all",
+		"build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+		"build:test:bridge": "gulp --module test --bridge",
+		"build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+		"test:server": "mocha test.js && mocha test.js --reporter=json > test.server.json",
+		"test:client": "./node_modules/.bin/wdio wdio.client.js",
+		"pretest": "npm run clear && npm run rebuild && npm run build:test",
+		"test": "npm run test:server && npm run test:client",
+		"posttest": "npm run formal",
+		"deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/volkovasystems/difpro.git"
+	},
+	"keywords": [
+		"property",
+		"difference",
+		"difpro"
+	],
+	"author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/volkovasystems/difpro/issues"
+	},
+	"homepage": "https://github.com/volkovasystems/difpro#readme",
+	"dependencies": {
+		"babel-runtime": "^6.25.0",
+		"difray": "^0.4.0",
+		"falzy": "^0.23.0"
+	}
 }
