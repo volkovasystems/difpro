@@ -72,7 +72,7 @@ const path = require( "path" );
 //: @server:
 
 describe( "difpro", ( ) => {
-	
+
 	describe( `"difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } )"`, ( ) => {
 		it( "should be deeply equal", ( ) => {
 
@@ -80,18 +80,18 @@ describe( "difpro", ( ) => {
 									[ "test", "apple" ]);
 
 		} );
-	} );	
+	} );
 } );
 
 
 //: @end-server
 
 
-//: @client: 
+//: @client:
 
 
 describe( "difpro", ( ) => {
-	
+
 	describe( `"difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } )"`, ( ) => {
 		it( "should be deeply equal", ( ) => {
 
@@ -99,7 +99,7 @@ describe( "difpro", ( ) => {
 									[ "test", "apple" ]);
 
 		} );
-	} );	
+	} );
 } );
 
 //: @end-client
@@ -109,34 +109,48 @@ describe( "difpro", ( ) => {
 
 describe( "difpro", ( ) => {
 
-	
-	let directory = __dirname;
-	let testBridge = path.resolve( directory, "bridge.html" );
-	let bridgeURL = `file://${ testBridge }`;
+	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
 
-	describe( `"difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } )"`, ( ) => {
-		it( "should be deeply equal", ( ) => {
+	describe( `"difpro( { "test": "123", "hello": "world" },
+		{ "hello": "world", "apple": "orange" } )"`, ( ) => {
 
-		assert.equal(disdo ( true, true ) );
+		it( "should be equal to [ 'test', 'apple' ]", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return difpro( { "test": "123", "hello": "world" },
+						{ "hello": "world", "apple": "orange" } )
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.deepEqual( result, [ "test", "apple" ] );
 
 		} );
-	} );	
+	} );
 
+	//These test needs to be fixed
+	// describe( "`difpro with symbols`", ( ) => {
+	// 	it( "should be equal to [ Symbol.for( 'hi' ) ]", ( ) => {
+	// 		//: @ignore:
+	// 		let result = browser.url( bridgeURL ).execute(
+	//
+	// 			function( ){
+	// 				return difpro( { [ Symbol.for( "hello" ) ]: "hello" },
+	// 					{ [ Symbol.for( "hello" ) ]: "hello",
+	// 					[ Symbol.for( "hi" ) ]: "hi" } )
+	// 			}
+	//
+	// 		).value;
+	// 		//: @end-ignore
+	//
+	// 		assert.deepEqual( result, [ Symbol.for( "hi" ) ] );
+	//
+	// 	} );
+	// } );
 
-	
 } );
 
 //: @end-bridge
-
-
-
-
-
-
-// const assert = require( "assert" );
-// const difpro = require( "./difpro.js" );
-
-// assert.deepEqual( difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } ),
-// 	[ "test", "apple" ], "should be deeply equal" );
-
-// console.log( "ok" );
