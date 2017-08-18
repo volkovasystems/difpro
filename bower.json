@@ -20,9 +20,5 @@
 		"bower_components",
 		"test",
 		"tests"
-	],
-	"dependencies": {
-		"difray": "^0.4.0",
-		"falzy": "^0.23.0"
-	}
+	]
 }
