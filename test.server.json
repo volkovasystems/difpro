@@ -1,32 +1,46 @@
 {
-  "stats": {
-    "suites": 2,
-    "tests": 1,
-    "passes": 1,
-    "pending": 0,
-    "failures": 0,
-    "start": "2017-08-18T01:26:42.828Z",
-    "end": "2017-08-18T01:26:42.835Z",
-    "duration": 7
-  },
-  "tests": [
-    {
-      "title": "should be deeply equal",
-      "fullTitle": "difpro \"difpro( { \"test\": \"123\", \"hello\": \"world\" }, { \"hello\": \"world\", \"apple\": \"orange\" } )\" should be deeply equal",
-      "duration": 3,
-      "currentRetry": 0,
-      "err": {}
-    }
-  ],
-  "pending": [],
-  "failures": [],
-  "passes": [
-    {
-      "title": "should be deeply equal",
-      "fullTitle": "difpro \"difpro( { \"test\": \"123\", \"hello\": \"world\" }, { \"hello\": \"world\", \"apple\": \"orange\" } )\" should be deeply equal",
-      "duration": 3,
-      "currentRetry": 0,
-      "err": {}
-    }
-  ]
+	"stats": {
+		"suites": 3,
+		"tests": 2,
+		"passes": 2,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-24T04:44:52.744Z",
+		"end": "2017-08-24T04:44:52.751Z",
+		"duration": 7
+	},
+	"tests": [
+		{
+			"title": "should be equal to [ 'test', 'apple' ]",
+			"fullTitle": "difpro `difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )` should be equal to [ 'test', 'apple' ]",
+			"duration": 3,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to [ Symbol.for( 'hi' ) ]",
+			"fullTitle": "difpro `difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )` should be equal to [ Symbol.for( 'hi' ) ]",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should be equal to [ 'test', 'apple' ]",
+			"fullTitle": "difpro `difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )` should be equal to [ 'test', 'apple' ]",
+			"duration": 3,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to [ Symbol.for( 'hi' ) ]",
+			"fullTitle": "difpro `difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )` should be equal to [ Symbol.for( 'hi' ) ]",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
 }

@@ -69,14 +69,25 @@ const difpro = require( "./difpro.js" );
 
 describe( "difpro", ( ) => {
 
-	describe( `"difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } )"`, ( ) => {
-		it( "should be deeply equal", ( ) => {
+	describe( "`difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )`", ( ) => {
+		it( "should be equal to [ 'test', 'apple' ]", ( ) => {
 
-			assert.deepEqual( difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } ),
-									[ "test", "apple" ]);
+			let test = difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } );
+			assert.deepEqual( test, [ "test", "apple" ] );
 
 		} );
 	} );
+
+	describe( "`difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )`", ( ) => {
+		it( "should be equal to [ Symbol.for( 'hi' ) ]", ( ) => {
+
+			let test = difpro( { [ Symbol.for( "hello" ) ]: "hello" }, { [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } );
+
+			assert.deepEqual( test, [ Symbol.for( "hi" ) ], "should be equal to [ Symbol.for( 'hi' ) ]" );
+
+		} );
+	} );
+
 } );
 
 

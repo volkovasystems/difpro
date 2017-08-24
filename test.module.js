@@ -161,17 +161,17 @@ describe( "difpro", ( ) => {
 
 				function( ){
 
-					let test = JSON.stringify( difpro( { [ Symbol.for( "hello" ) ]: "hello" },
-						{ [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } ) );
+					let test = difpro( { [ Symbol.for( "hello" ) ]: "hello" },
+						{ [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } );
 
-					return test;
+					return test[ 0 ].toString( ) == "Symbol(hi)";
 
 				}
 
 			).value;
 			//: @end-ignore
 
-			assert.deepEqual( JSON.parse( result ), [ Symbol.for( "hi" ) ] );
+			assert.equal( result, true );
 
 		} );
 	} );

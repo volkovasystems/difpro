@@ -1,0 +1,116 @@
+{
+	"state": {
+		"passed": 2,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-24T04:44:53.841Z",
+	"end": "2017-08-24T04:45:37.680Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "difpro",
+			"duration": 0,
+			"start": "2017-08-24T04:45:37.364Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "difpro",
+			"duration": 139,
+			"start": "2017-08-24T04:45:37.365Z",
+			"end": "2017-08-24T04:45:37.504Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-24T04:45:37.366Z",
+					"end": "2017-08-24T04:45:37.367Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "difpro",
+					"associatedTest": "should be equal to [ 'test', 'apple' ]"
+				},
+				{
+					"start": "2017-08-24T04:45:37.456Z",
+					"end": "2017-08-24T04:45:37.456Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "difpro",
+					"associatedTest": "should be equal to [ 'test', 'apple' ]"
+				},
+				{
+					"start": "2017-08-24T04:45:37.457Z",
+					"end": "2017-08-24T04:45:37.457Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "difpro",
+					"associatedTest": "should be equal to [ Symbol.for( 'hi' ) ]"
+				},
+				{
+					"start": "2017-08-24T04:45:37.504Z",
+					"end": "2017-08-24T04:45:37.504Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "difpro",
+					"associatedTest": "should be equal to [ Symbol.for( 'hi' ) ]"
+				},
+				{
+					"start": "2017-08-24T04:45:37.504Z",
+					"end": "2017-08-24T04:45:37.505Z",
+					"duration": 1,
+					"title": "\"after all\" hook",
+					"associatedSuite": "difpro"
+				}
+			]
+		},
+		{
+			"name": "`difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )`",
+			"duration": 92,
+			"start": "2017-08-24T04:45:37.365Z",
+			"end": "2017-08-24T04:45:37.457Z",
+			"tests": [
+				{
+					"name": "should be equal to [ 'test', 'apple' ]",
+					"start": "2017-08-24T04:45:37.366Z",
+					"end": "2017-08-24T04:45:37.456Z",
+					"duration": 90,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )`",
+			"duration": 47,
+			"start": "2017-08-24T04:45:37.457Z",
+			"end": "2017-08-24T04:45:37.504Z",
+			"tests": [
+				{
+					"name": "should be equal to [ Symbol.for( 'hi' ) ]",
+					"start": "2017-08-24T04:45:37.457Z",
+					"end": "2017-08-24T04:45:37.504Z",
+					"duration": 47,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}
