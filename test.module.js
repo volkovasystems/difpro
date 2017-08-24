@@ -73,14 +73,25 @@ const path = require( "path" );
 
 describe( "difpro", ( ) => {
 
-	describe( `"difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } )"`, ( ) => {
-		it( "should be deeply equal", ( ) => {
+	describe( "`difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )`", ( ) => {
+		it( "should be equal to [ 'test', 'apple' ]", ( ) => {
 
-			assert.deepEqual( difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } ),
-									[ "test", "apple" ]);
+			let test = difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } );
+			assert.deepEqual( test, [ "test", "apple" ] );
 
 		} );
 	} );
+
+	describe( "`difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )`", ( ) => {
+		it( "should be equal to [ Symbol.for( 'hi' ) ]", ( ) => {
+
+			let test = difpro( { [ Symbol.for( "hello" ) ]: "hello" }, { [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } );
+
+			assert.deepEqual( test, [ Symbol.for( "hi" ) ], "should be equal to [ Symbol.for( 'hi' ) ]" );
+
+		} );
+	} );
+
 } );
 
 
@@ -89,17 +100,27 @@ describe( "difpro", ( ) => {
 
 //: @client:
 
-
 describe( "difpro", ( ) => {
 
-	describe( `"difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } )"`, ( ) => {
-		it( "should be deeply equal", ( ) => {
+	describe( "`difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )`", ( ) => {
+		it( "should be equal to [ 'test', 'apple' ]", ( ) => {
 
-			assert.deepEqual( difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } ),
-									[ "test", "apple" ]);
+			let test = difpro( { "test": "123", "hello": "world" }, { "hello": "world", "apple": "orange" } );
+			assert.deepEqual( test, [ "test", "apple" ] );
 
 		} );
 	} );
+
+	describe( "`difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )`", ( ) => {
+		it( "should be equal to [ Symbol.for( 'hi' ) ]", ( ) => {
+
+			let test = difpro( { [ Symbol.for( "hello" ) ]: "hello" }, { [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } );
+
+			assert.deepEqual( test, [ Symbol.for( "hi" ) ], "should be equal to [ Symbol.for( 'hi' ) ]" );
+
+		} );
+	} );
+
 } );
 
 //: @end-client
@@ -111,46 +132,49 @@ describe( "difpro", ( ) => {
 
 	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
 
-	describe( `"difpro( { "test": "123", "hello": "world" },
-		{ "hello": "world", "apple": "orange" } )"`, ( ) => {
-
+	describe( "`difpro( { 'test': '123', 'hello': 'world' }, { 'hello': 'world', 'apple': 'orange' } )`", ( ) => {
 		it( "should be equal to [ 'test', 'apple' ]", ( ) => {
 			//: @ignore:
 			let result = browser.url( bridgeURL ).execute(
 
 				function( ){
-					return difpro( { "test": "123", "hello": "world" },
-						{ "hello": "world", "apple": "orange" } )
+
+					let test = JSON.stringify( difpro( { "test": "123", "hello": "world" },
+						{ "hello": "world", "apple": "orange" } ) );
+
+					return test;
+
 				}
 
 			).value;
 			//: @end-ignore
 
-			assert.deepEqual( result, [ "test", "apple" ] );
+			assert.deepEqual( JSON.parse( result ), [ "test", "apple" ] );
 
 		} );
 	} );
-	
 
-	//These test needs to be fixed
-	// describe( "`difpro with symbols`", ( ) => {
-	// 	it( "should be equal to [ Symbol.for( 'hi' ) ]", ( ) => {
-	// 		//: @ignore:
-	// 		let result = browser.url( bridgeURL ).execute(
-	//
-	// 			function( ){
-	// 				return difpro( { [ Symbol.for( "hello" ) ]: "hello" },
-	// 					{ [ Symbol.for( "hello" ) ]: "hello",
-	// 					[ Symbol.for( "hi" ) ]: "hi" } )
-	// 			}
-	//
-	// 		).value;
-	// 		//: @end-ignore
-	//
-	// 		assert.deepEqual( result, [ Symbol.for( "hi" ) ] );
-	//
-	// 	} );
-	// } );
+	describe( "`difpro( { [ Symbol.for( 'hello' ) ]: 'hello' }, { [ Symbol.for( 'hello' ) ]: 'hello', [ Symbol.for( 'hi' ) ]: 'hi' } )`", ( ) => {
+		it( "should be equal to [ Symbol.for( 'hi' ) ]", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+
+					let test = JSON.stringify( difpro( { [ Symbol.for( "hello" ) ]: "hello" },
+						{ [ Symbol.for( "hello" ) ]: "hello", [ Symbol.for( "hi" ) ]: "hi" } ) );
+
+					return test;
+
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.deepEqual( JSON.parse( result ), [ Symbol.for( "hi" ) ] );
+
+		} );
+	} );
 
 } );
 
