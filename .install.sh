@@ -2,6 +2,7 @@ yarn add \
 babel-runtime \
 difray \
 falzy \
+truly \
 --save && \
 yarn add \
 babel-cli \
@@ -30,5 +31,6 @@ yargs \
 bower install \
 difray \
 falzy \
+truly \
 --save \
 --force-latest
